@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agencia Viajes Sol & Mar</title>
+  <meta name="description" content="Agencia de viajes - reservas, paquetes, destinos y experiencias inolvidables" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Pequeño ajuste visual para el hero: degradado sobre imagen */
+    .hero-bg { background-image: linear-gradient(rgba(2,6,23,0.45), rgba(2,6,23,0.45)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=60'); background-size: cover; background-position: center; }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-slate-50">
+  <!-- NAV (checkbox hack para menu móvil sin JS) -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center gap-4">
+          <a href="#" class="flex items-center gap-3">
+            <span class="inline-block w-10 h-10 rounded-md bg-gradient-to-br from-amber-400 to-rose-500 flex items-center justify-center text-white font-bold">S</span>
+            <div class="hidden sm:block">
+              <h1 class="text-lg font-semibold">Sol &amp; Mar</h1>
+              <p class="text-xs text-slate-500 -mt-1">Agencia de viajes</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Menú orden normal (desktop) -->
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="#destinos" class="text-sm font-medium hover:text-sky-600">Destinos</a>
+          <a href="#servicios" class="text-sm font-medium hover:text-sky-600">Servicios</a>
+          <a href="#testimonios" class="text-sm font-medium hover:text-sky-600">Testimonios</a>
+          <a href="#contacto" class="text-sm font-medium hover:text-sky-600">Contacto</a>
+          <a href="#" class="ml-4 inline-flex items-center px-4 py-2 rounded-md bg-sky-600 text-white text-sm font-medium hover:bg-sky-700">Reservar</a>
+        </nav>
+
+        <!-- Mobile menu (checkbox hack) -->
+        <div class="md:hidden">
+          <input type="checkbox" id="menu-toggle" class="peer hidden" />
+          <label for="menu-toggle" class="p-2 rounded-md cursor-pointer border border-slate-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </label>
+          <div class="absolute right-4 mt-2 w-52 bg-white rounded-lg shadow-lg p-4 origin-top-right transform scale-95 opacity-0 transition-all peer-checked:opacity-100 peer-checked:scale-100 peer-checked:translate-y-0">
+            <nav class="flex flex-col gap-3">
+              <a href="#destinos" class="text-slate-700">Destinos</a>
+              <a href="#servicios" class="text-slate-700">Servicios</a>
+              <a href="#testimonios" class="text-slate-700">Testimonios</a>
+              <a href="#contacto" class="text-slate-700">Contacto</a>
+              <a href="#" class="mt-2 inline-block px-3 py-2 text-sm rounded-md bg-sky-600 text-white text-center">Reservar</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero-bg h-[70vh] flex items-center">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div class="max-w-3xl text-white">
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-tight">Explora el mundo con confianza</h2>
+          <p class="mt-4 text-lg text-slate-100/90">Paquetes personalizados, vuelos, hoteles y experiencias locales. Encuentra tu próxima aventura hoy.</p>
+
+          <form class="mt-6 bg-white/10 backdrop-blur-sm p-4 rounded-lg grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <input class="px-3 py-2 rounded-md bg-white/80 text-slate-800 placeholder:text-slate-500" type="text" placeholder="Destino (ej. Bali)" />
+            <input class="px-3 py-2 rounded-md bg-white/80 text-slate-800 placeholder:text-slate-500" type="date" />
+            <button class="px-4 py-2 rounded-md bg-amber-400 hover:bg-amber-500 font-semibold">Buscar</button>
+          </form>
+
+          <div class="mt-6 flex items-center gap-6 text-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">✈️</div>
+              <div>
+                <p class="font-semibold">Vuelos flexibles</p>
+                <p class="text-xs text-white/80">Cambios fáciles y promociones</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">🏨</div>
+              <div>
+                <p class="font-semibold">Hoteles seleccionados</p>
+                <p class="text-xs text-white/80">Con opciones para todos los presupuestos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      <div class="text-center">
+        <h3 class="text-2xl font-bold">Nuestros servicios</h3>
+        <p class="mt-2 text-slate-600 max-w-2xl mx-auto">Desde paquetes todo incluido hasta viajes a medida y soporte 24/7 durante tu viaje.</p>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <article class="bg-white rounded-xl p-6 shadow-sm">
+          <div class="text-3xl">🌴</div>
+          <h4 class="mt-4 font-semibold">Paquetes de playa</h4>
+          <p class="mt-2 text-sm text-slate-600">Hoteles, excursiones y traslado incluidos para que solo te preocupes por relajarte.</p>
+        </article>
+
+        <article class="bg-white rounded-xl p-6 shadow-sm">
+          <div class="text-3xl">🏔️</div>
+          <h4 class="mt-4 font-semibold">Aventuras y trekking</h4>
+          <p class="mt-2 text-sm text-slate-600">Rutas guiadas, equipo y transporte para los más intrépidos.</p>
+        </article>
+
+        <article class="bg-white rounded-xl p-6 shadow-sm">
+          <div class="text-3xl">🏙️</div>
+          <h4 class="mt-4 font-semibold">Ciudades y cultura</h4>
+          <p class="mt-2 text-sm text-slate-600">Tours culturales, museos y experiencias gastronómicas.</p>
+        </article>
+
+        <article class="bg-white rounded-xl p-6 shadow-sm">
+          <div class="text-3xl">👨‍👩‍👧‍👦</div>
+          <h4 class="mt-4 font-semibold">Viajes familiares</h4>
+          <p class="mt-2 text-sm text-slate-600">Actividades y alojamientos pensados para niños y adultos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Destinos destacados -->
+    <section id="destinos" class="bg-slate-50 py-12">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between">
+          <h3 class="text-2xl font-bold">Destinos destacados</h3>
+          <a href="#" class="text-sm text-sky-600">Ver todos →</a>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="relative rounded-lg overflow-hidden shadow-md">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=60" alt="Playa" class="w-full h-56 object-cover" />
+            <div class="absolute left-4 bottom-4 text-white">
+              <h4 class="text-xl font-semibold">Maldivas</h4>
+              <p class="text-sm">Desde $1,299</p>
+            </div>
+          </div>
+
+          <div class="relative rounded-lg overflow-hidden shadow-md">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=60" alt="Montaña" class="w-full h-56 object-cover" />
+            <div class="absolute left-4 bottom-4 text-white">
+              <h4 class="text-xl font-semibold">Cusco & Machu Picchu</h4>
+              <p class="text-sm">Desde $799</p>
+            </div>
+          </div>
+
+          <div class="relative rounded-lg overflow-hidden shadow-md">
+            <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=60" alt="Ciudad" class="w-full h-56 object-cover" />
+            <div class="absolute left-4 bottom-4 text-white">
+              <h4 class="text-xl font-semibold">París</h4>
+              <p class="text-sm">Desde $999</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      <div class="text-center">
+        <h3 class="text-2xl font-bold">Lo que dicen nuestros viajeros</h3>
+        <p class="mt-2 text-slate-600 max-w-2xl mx-auto">Historias reales de experiencias inolvidables.</p>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <blockquote class="bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-slate-700">"Reserva perfecta, atención excelente y todo tal como se describía. Volvería a viajar con Sol & Mar."</p>
+          <footer class="mt-4 text-sm text-slate-500">— María P., Perú</footer>
+        </blockquote>
+
+        <blockquote class="bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-slate-700">"El tour a Machu Picchu fue inolvidable. Guía experto y organización impecable."</p>
+          <footer class="mt-4 text-sm text-slate-500">— José R., Colombia</footer>
+        </blockquote>
+
+        <blockquote class="bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-slate-700">"Atención 24/7 cuando tuvimos un imprevisto. Muchas gracias por su apoyo."</p>
+          <footer class="mt-4 text-sm text-slate-500">— Ana G., España</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FAQ simple -->
+    <section class="bg-slate-100 py-12">
+      <div class="max-w-4xl mx-auto px-6">
+        <h3 class="text-2xl font-bold text-center">Preguntas frecuentes</h3>
+        <div class="mt-6 space-y-4">
+          <details class="bg-white p-4 rounded-lg shadow-sm">
+            <summary class="font-medium cursor-pointer">¿Puedo cambiar mi fecha de viaje?</summary>
+            <p class="mt-2 text-sm text-slate-600">Sí, muchas tarifas permiten cambios. Depende del paquete y la aerolínea; te ayudamos a gestionar el cambio.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow-sm">
+            <summary class="font-medium cursor-pointer">¿Qué incluye el paquete todo incluido?</summary>
+            <p class="mt-2 text-sm text-slate-600">Suele incluir alojamiento, traslados, algunas comidas y actividades. Revisamos el detalle de cada paquete.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto / Footer form -->
+    <section id="contacto" class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div>
+          <h3 class="text-2xl font-bold">¿Listo para tu próxima aventura?</h3>
+          <p class="mt-2 text-slate-600">Contáctanos y uno de nuestros asesores te ayudará a armar el viaje ideal.</p>
+
+          <ul class="mt-6 space-y-3 text-sm text-slate-600">
+            <li class="flex items-start gap-3"><span class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center">📞</span> <div><strong>Tel:</strong> +51 987 654 321</div></li>
+            <li class="flex items-start gap-3"><span class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center">✉️</span> <div><strong>Email:</strong> reservas@solymar.com</div></li>
+            <li class="flex items-start gap-3"><span class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center">📍</span> <div><strong>Oficina:</strong> Av. Principal 123, Cusco</div></li>
+          </ul>
+        </div>
+
+        <form class="bg-white p-6 rounded-lg shadow-sm" autocomplete="off">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input class="px-3 py-2 border rounded-md" type="text" placeholder="Nombre" />
+            <input class="px-3 py-2 border rounded-md" type="email" placeholder="Correo" />
+            <input class="px-3 py-2 border rounded-md" type="tel" placeholder="Teléfono" />
+            <select class="px-3 py-2 border rounded-md">
+              <option>Tipo de viaje</option>
+              <option>Familiar</option>
+              <option>Romántico</option>
+              <option>Aventura</option>
+              <option>Relajación</option>
+            </select>
+          </div>
+          <textarea class="mt-4 px-3 py-2 border rounded-md w-full" rows="4" placeholder="Cuéntanos tu idea de viaje..."></textarea>
+          <div class="mt-4 flex items-center justify-between">
+            <small class="text-slate-500">Te respondemos en menos de 48 horas.</small>
+            <button class="px-4 py-2 rounded-md bg-amber-400 hover:bg-amber-500 text-white font-semibold">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t mt-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-gradient-to-br from-amber-400 to-rose-500 flex items-center justify-center text-white font-bold">S</div>
+        <div>
+          <p class="font-semibold">Sol &amp; Mar</p>
+          <p class="text-sm text-slate-500">© 2025. Todos los derechos reservados.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-6 text-sm text-slate-600">
+        <a href="#">Términos</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
