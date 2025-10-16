@@ -2,54 +2,30 @@
 session_start();
 include("conexion.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $correo = $_POST['correo'];
-    $clave = $_POST['clave'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $correo = trim($_POST['correo'] ?? '');
+    $clave = $_POST['clave'] ?? '';
 
-    // Buscar usuario por correo
-    $sql = "SELECT * FROM cuenta_usuario WHERE correo = ?";
-    $stmt = $conexion->prepare($sql);
+    $stmt = $conexion->prepare("SELECT id_usuario, nombre_usuario, contraseña, id_rol FROM cuenta_usuario WHERE correo = ?");
     $stmt->bind_param("s", $correo);
     $stmt->execute();
-    $resultado = $stmt->get_result();
+    $res = $stmt->get_result();
 
-    if ($resultado->num_rows > 0) {
-        $usuario = $resultado->fetch_assoc();
-
-        // Verificar contraseña
-        if (password_verify($clave, $usuario['contraseña'])) {
-            $_SESSION['nombre'] = $usuario['nombre_usuario'];
-            $_SESSION['rol'] = $usuario['id_rol'];
-
-            // Redirigir según rol
-            switch ($usuario['id_rol']) {
-                case 1:
-                    header("Location: ../admi/index_admi.php");
-                    break;
-                case 2:
-                    header("Location: ../usuario/index.php");
-                    break;
-                case 3:
-                    header("Location: ../invitado/index.php");
-                    break;
-                default:
-                    header("Location: ../../inicio_registro.html");
-            }
-            exit;
+    if ($res && $res->num_rows === 1) {
+        $user = $res->fetch_assoc();
+        if (password_verify($clave, $user['contraseña'])) {
+            // Inicio de sesión correcto
+            $_SESSION['id_usuario'] = $user['id_usuario'];
+            $_SESSION['nombre_usuario'] = $user['nombre_usuario'];
+            $_SESSION['id_rol'] = $user['id_rol'];
+            header("Location: ../admi/index_admi.php"); exit;
         } else {
-            echo "<script>
-                    alert('⚠️ Contraseña incorrecta.');
-                    window.history.back();
-                  </script>";
+            echo "<script>alert('Contraseña incorrecta'); window.history.back();</script>";
+            exit;
         }
     } else {
-        echo "<script>
-                alert('⚠️ No existe una cuenta con ese correo.');
-                window.history.back();
-              </script>";
+        echo "<script>alert('Usuario no encontrado'); window.history.back();</script>";
+        exit;
     }
-
-    $stmt->close();
-    $conexion->close();
 }
 ?>

@@ -60,10 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <a href="agregar_usuario.php" class="flex items-center gap-3 px-6 py-3 hover:bg-sky-700 transition">
             <i class="fa-solid fa-database"></i><span>Registros</span>
           </a>
-          <a href="#" class="flex items-center gap-3 px-6 py-3 hover:bg-sky-700 transition">
+          <a href="estadisticas.html" class="flex items-center gap-3 px-6 py-3 hover:bg-sky-700 transition">
             <i class="fa-solid fa-chart-line"></i><span>Estadísticas</span>
           </a>
-          <a href="#" class="flex items-center gap-3 px-6 py-3 hover:bg-sky-700 transition">
+          <a href="configuraciones.php" class="flex items-center gap-3 px-6 py-3 hover:bg-sky-700 transition">
             <i class="fa-solid fa-gear"></i><span>Configuración</span>
           </a>
         </nav>
