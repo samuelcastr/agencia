@@ -13,12 +13,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($res && $res->num_rows === 1) {
         $user = $res->fetch_assoc();
+
         if (password_verify($clave, $user['contraseña'])) {
-            // Inicio de sesión correcto
+            // Guardar sesión
             $_SESSION['id_usuario'] = $user['id_usuario'];
             $_SESSION['nombre_usuario'] = $user['nombre_usuario'];
             $_SESSION['id_rol'] = $user['id_rol'];
-            header("Location: ../admi/index_admi.php"); exit;
+
+            // Redirección según el rol
+            switch ($user['id_rol']) {
+                case 1: // Administrador
+                    header("Location: ../admi/index_admi.php");
+                    break;
+                case 2: // Usuario (gestiona provincias y reservas)
+                    header("Location: ../usuario/panel_usuario.php");
+                    break;
+                case 3: // Invitado
+                    header("Location: ../invitado/panel_invitado.php");
+                    break;
+                default:
+                    echo "<script>alert('Rol no válido'); window.history.back();</script>";
+                    exit;
+            }
+            exit;
         } else {
             echo "<script>alert('Contraseña incorrecta'); window.history.back();</script>";
             exit;
@@ -29,3 +46,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
