@@ -5,8 +5,9 @@ session_start();
 include('../php/conexion.php'); 
 
 // La página es pública, pero se personaliza si hay sesión.
-$nombre_invitado = isset($_SESSION['nombre']) ? htmlspecialchars($_SESSION['nombre']) : "Visitante";
-$es_invitado_logueado = isset($_SESSION['rol']) && $_SESSION['rol'] == 3;
+// Usar las mismas claves de sesión que en login.php
+$nombre_invitado = isset($_SESSION['nombre_usuario']) ? htmlspecialchars($_SESSION['nombre_usuario']) : "Visitante";
+$es_invitado_logueado = isset($_SESSION['id_rol']) && $_SESSION['id_rol'] == 3;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +35,8 @@ $es_invitado_logueado = isset($_SESSION['rol']) && $_SESSION['rol'] == 3;
                         <i class="fa-solid fa-plane-departure"></i><span>Ver Paquetes</span>
                     </a>
                     <?php if (!$es_invitado_logueado): ?>
-                    <a href="../inicio_registro.html" class="flex items-center gap-3 px-6 py-3 hover:bg-amber-700 transition">
+                    <!-- ruta absoluta para evitar Not Found -->
+                    <a href="/agencia-1/viajes/inicio_registro.html" class="flex items-center gap-3 px-6 py-3 hover:bg-amber-700 transition">
                         <i class="fa-solid fa-user-plus"></i><span>Iniciar Sesión</span>
                     </a>
                     <?php else: ?>
@@ -45,8 +47,8 @@ $es_invitado_logueado = isset($_SESSION['rol']) && $_SESSION['rol'] == 3;
                 </nav>
             </div>
             <div class="border-t border-amber-400 px-6 py-4">
-                <?php if (isset($_SESSION['nombre'])): ?>
-                    <a href="../php/cerrar_sesion.php" class="flex items-center gap-2 text-sky-800 hover:text-white transition">
+                <?php if (isset($_SESSION['nombre_usuario'])): ?>
+                    <a href="/agencia-1/viajes/php/cerrar_sesion.php" class="flex items-center gap-2 text-sky-800 hover:text-white transition">
                         <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
                     </a>
                 <?php endif; ?>
