@@ -36,22 +36,17 @@ $es_invitado_logueado = isset($_SESSION['id_rol']) && $_SESSION['id_rol'] == 3;
                     </a>
                     <?php if (!$es_invitado_logueado): ?>
                     <!-- ruta absoluta para evitar Not Found -->
-                    <a href="/agencia-1/viajes/inicio_registro.html" class="flex items-center gap-3 px-6 py-3 hover:bg-amber-700 transition">
+                    <a href="/agencia-1/viajes/panel_invitado.php" class="flex items-center gap-3 px-6 py-3 hover:bg-amber-700 transition">
                         <i class="fa-solid fa-user-plus"></i><span>Iniciar Sesión</span>
-                    </a>
-                    <?php else: ?>
-                    <a href="#" class="flex items-center gap-3 px-6 py-3 hover:bg-amber-700 transition">
-                        <i class="fa-solid fa-gem"></i><span>Mi Cuenta</span>
                     </a>
                     <?php endif; ?>
                 </nav>
             </div>
             <div class="border-t border-amber-400 px-6 py-4">
-                <?php if (isset($_SESSION['nombre_usuario'])): ?>
-                    <a href="/agencia-1/viajes/php/cerrar_sesion.php" class="flex items-center gap-2 text-sky-800 hover:text-white transition">
-                        <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
-                    </a>
-                <?php endif; ?>
+          
+                      <a href="../index.html" class="flex items-center gap-2 text-amber-300 hover:text-white transition">
+          <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
+        </a>
             </div>
         </aside>
 
