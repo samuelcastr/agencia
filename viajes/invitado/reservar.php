@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if ($personas < 1) $personas = 1;
 
-    $sql = "INSERT INTO reservas (id_usuario, id_destino, nombre, correo, telefono, fecha_viaje, personas, comentarios, fecha_creacion)
+    $sql = "INSERT INTO reservas (id_usuario, id_provincia, nombre, correo, telefono, fecha_viaje, personas, comentarios, fecha_creacion)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())";
     $stmt = $conexion->prepare($sql);
     if (!$stmt) {
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         echo "<script>
                 alert('✅ Reserva registrada. Nos contactaremos contigo pronto.');
-                window.location.href = '/agencia-1/viajes/invitado/panel_invitado.php'; 
+                window.location.href = '/agencia/viajes/invitado/panel_invitado.php'; 
               </script>";
         $stmt->close();
         $conexion->close();
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="bg-slate-100 font-sans">
     <div class="max-w-3xl mx-auto p-6">
-        <a href="/agencia-1/viajes/invitado/detalle_destino.php?id=<?= htmlspecialchars($id_destino) ?>" class="text-sky-600 hover:underline mb-4 inline-block">← Volver</a>
+        <a href="/agencia/viajes/invitado/detalle_destino.php?id=<?= htmlspecialchars($id_destino) ?>" class="text-sky-600 hover:underline mb-4 inline-block">← Volver</a>
 
         <div class="bg-white shadow rounded-lg p-6">
             <h1 class="text-2xl font-bold text-amber-800 mb-4">Reservar destino</h1>
@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="flex items-center gap-3">
                     <button type="submit" class="px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">Enviar reserva</button>
-                    <a href="/agencia-1/viajes/invitado/panel_invitado.php" class="text-sm text-gray-600 hover:underline">Cancelar</a>
+                    <a href="/agencia/viajes/invitado/panel_invitado.php" class="text-sm text-gray-600 hover:underline">Cancelar</a>
                 </div>
             </form>
         </div>

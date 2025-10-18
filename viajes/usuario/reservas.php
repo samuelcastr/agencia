@@ -3,11 +3,20 @@ include("../php/conexion.php");
 
 // Consultar datos con JOIN a provincias
 $query = "
-  SELECT c.id_compania, c.nombre, c.Edad, c.Fecha, c.VIP, 
-         c.Direccion, c.Telefono, c.Ciudad_origen, p.nombre
-  FROM compania c
-  LEFT JOIN provincia p ON c.id_provincia = p.id_provincia
-  ORDER BY c.id_compania ASC
+  SELECT 
+    r.id_usuario,
+    u.nombre_usuario AS nombre_usuario,
+    r.correo,
+    r.telefono,
+    r.fecha_viaje,
+    r.personas,
+    r.comentarios,
+    r.fecha_creacion,
+    p.nombre AS nombre_provincia
+  FROM reservas r
+  LEFT JOIN cuenta_usuario u ON r.id_usuario = u.id_usuario
+  LEFT JOIN provincia p ON r.id_provincia = p.id_provincia
+  ORDER BY r.fecha_creacion DESC
 ";
 $resultado = $conexion->query($query);
 ?>
@@ -64,32 +73,26 @@ $resultado = $conexion->query($query);
           <tr>
             <th class="py-3 px-4 text-left">#</th>
             <th class="py-3 px-4 text-left">Nombre</th>
-            <th class="py-3 px-4 text-left">Edad</th>
-            <th class="py-3 px-4 text-left">Fecha</th>
-            <th class="py-3 px-4 text-left">VIP</th>
-            <th class="py-3 px-4 text-left">Dirección</th>
+            <th class="py-3 px-4 text-left">Correo</th>
             <th class="py-3 px-4 text-left">Teléfono</th>
-            <th class="py-3 px-4 text-left">Ciudad Origen</th>
+            <th class="py-3 px-4 text-left">fecha del viaje</th>
+            <th class="py-3 px-4 text-left">numero de persponas</th>
+            <th class="py-3 px-4 text-left">comentarios</th>
+            <th class="py-3 px-4 text-left">fecha de creacion</th>
             <th class="py-3 px-4 text-left">Provincia</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
           <?php while ($fila = $resultado->fetch_assoc()) { ?>
             <tr class="hover:bg-gray-50">
-              <td class="py-3 px-4"><?= $fila['id_compania'] ?></td>
-              <td class="py-3 px-4"><?= htmlspecialchars($fila['nombre']) ?></td>
-              <td class="py-3 px-4"><?= $fila['Edad'] ?></td>
-              <td class="py-3 px-4"><?= $fila['Fecha'] ?></td>
-              <td class="py-3 px-4">
-                <?php if ($fila['VIP'] == 1): ?>
-                  <span class="bg-yellow-400 text-white px-2 py-1 rounded-md text-sm">VIP</span>
-                <?php else: ?>
-                  <span class="bg-gray-300 text-gray-800 px-2 py-1 rounded-md text-sm">Normal</span>
-                <?php endif; ?>
-              </td>
-              <td class="py-3 px-4"><?= htmlspecialchars($fila['Direccion']) ?></td>
-              <td class="py-3 px-4"><?= htmlspecialchars($fila['Telefono']) ?></td>
-              <td class="py-3 px-4"><?= htmlspecialchars($fila['Ciudad_origen']) ?></td>
+              <td class="py-3 px-4"><?= $fila['id_usuario'] ?></td>
+              <td class="py-3 px-4"><?= htmlspecialchars($fila['nombre_usuario']) ?></td>
+              <td class="py-3 px-4"><?= htmlspecialchars($fila['correo']) ?></td>
+              <td class="py-3 px-4"><?= htmlspecialchars($fila['telefono']) ?></td>
+              <td class="py-3 px-4"><?= htmlspecialchars($fila['fecha_viaje']) ?></td>
+              <td class="py-3 px-4"><?= htmlspecialchars($fila['personas']) ?></td>
+              <td class="py-3 px-4"><?= htmlspecialchars($fila['comentarios']) ?></td>
+              <td class="py-3 px-4"><?= htmlspecialchars($fila['fecha_creacion']) ?></td>
               <td class="py-3 px-4"><?= htmlspecialchars($fila['nombre_provincia'] ?? '—') ?></td>
             </tr>
           <?php } ?>

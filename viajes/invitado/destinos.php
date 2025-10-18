@@ -118,7 +118,7 @@ if ($stmt) {
     <div class="max-w-6xl mx-auto p-6">
         <header class="mb-6 flex items-center justify-between">
             <h1 class="text-3xl font-bold text-amber-800">Destinos / Provincias</h1>
-            <a href="/agencia-1/viajes/invitado/panel_invitado.php" class="text-sky-600 hover:underline">Volver al panel</a>
+            <a href="/agencia/viajes/invitado/panel_invitado.php" class="text-sky-600 hover:underline">Volver al panel</a>
         </header>
 
         <!-- Tarjeta descriptiva encima del grid -->
@@ -191,10 +191,10 @@ if ($stmt) {
 
                             <!-- botones visibles en la cara trasera -->
                             <div class="mt-4 flex gap-2">
-                                <a href="/agencia-1/viajes/invitado/detalle_destino.php?id=<?= urlencode($p['id']) ?>" class="flex-1 text-center px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">
+                                <a href="/agencia/viajes/invitado/detalle_destino.php?id=<?= urlencode($p['id']) ?>" class="flex-1 text-center px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">
                                     Más detalles
                                 </a>
-                                <a href="/agencia-1/viajes/invitado/reservar.php?provincia=<?= urlencode($p['id']) ?>" class="flex-1 text-center px-3 py-2 border border-sky-600 text-sky-600 rounded hover:bg-sky-50">
+                                <a href="/agencia/viajes/invitado/reservar.php?provincia=<?= urlencode($p['id']) ?>" class="flex-1 text-center px-3 py-2 border border-sky-600 text-sky-600 rounded hover:bg-sky-50">
                                     Reservar
                                 </a>
                             </div>

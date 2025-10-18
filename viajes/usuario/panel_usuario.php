@@ -27,7 +27,7 @@
         <a href="reservas.php" class="flex items-center gap-3 px-6 py-3 hover:bg-sky-700 transition">
           <i class="fa-solid fa-calendar-check"></i><span>Reservas</span>
         </a>
-        <a href="config_usuario.php" class="flex items-center gap-3 px-6 py-3 hover:bg-sky-700 transition">
+        <a href="configuracion_usuario.php" class="flex items-center gap-3 px-6 py-3 hover:bg-sky-700 transition">
           <i class="fa-solid fa-gear"></i><span>Configuración</span>
         </a>
       </nav>
@@ -65,7 +65,7 @@
         <i class="fa-solid fa-gear text-yellow-500 text-4xl mb-3"></i>
         <h2 class="text-xl font-semibold mb-2">Configuración</h2>
         <p class="text-gray-600 mb-4">Actualiza tu información personal o cambia tu contraseña.</p>
-        <a href="config_usuario.php" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg inline-block">Ir a Configuración</a>
+        <a href="configuracion_usuario.php" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg inline-block">Ir a Configuración</a>
       </div>
     </div>
   </main>
