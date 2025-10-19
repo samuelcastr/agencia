@@ -4,6 +4,7 @@ include("../php/conexion.php");
 // Consultar datos con JOIN a provincias
 $query = "
   SELECT 
+    r.id_reserva,
     r.id_usuario,
     u.nombre_usuario AS nombre_usuario,
     r.correo,
@@ -67,6 +68,12 @@ $resultado = $conexion->query($query);
   <main class="flex-1 p-10 overflow-y-auto">
     <h1 class="text-3xl font-bold text-gray-800 mb-8">📊 Estado de Reservas</h1>
 
+    <div class="flex justify-end mb-4">
+      <a href="agregar_reserva.php" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md">
+        + Agregar Reserva
+      </a>
+    </div>
+
     <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
       <table class="min-w-full border border-gray-200">
         <thead class="bg-sky-700 text-white">
@@ -80,6 +87,8 @@ $resultado = $conexion->query($query);
             <th class="py-3 px-4 text-left">comentarios</th>
             <th class="py-3 px-4 text-left">fecha de creacion</th>
             <th class="py-3 px-4 text-left">Provincia</th>
+            <th class="py-3 px-4 text-center">Acciones</th>
+
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
@@ -94,6 +103,15 @@ $resultado = $conexion->query($query);
               <td class="py-3 px-4"><?= htmlspecialchars($fila['comentarios']) ?></td>
               <td class="py-3 px-4"><?= htmlspecialchars($fila['fecha_creacion']) ?></td>
               <td class="py-3 px-4"><?= htmlspecialchars($fila['nombre_provincia'] ?? '—') ?></td>
+              <td class="py-3 px-4 text-center space-x-2">
+  <a href="editar_reserva.php?id=<?= $fila['id_usuario'] ?>" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-md">Editar</a>
+ <a href="eliminar_reserva.php?id_reserva=<?php echo $fila['id_reserva']; ?>" 
+   class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md"
+   onclick="return confirm('¿Deseas eliminar esta reserva?');">
+   Eliminar
+</a>
+</td>
+
             </tr>
           <?php } ?>
         </tbody>

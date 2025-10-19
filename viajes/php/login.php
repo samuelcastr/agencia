@@ -14,21 +14,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($res && $res->num_rows === 1) {
         $user = $res->fetch_assoc();
 
-        if (password_verify($clave, $user['contraseña'])) {
-            // Guardar sesión
+       if (password_verify($clave, $user['contraseña'])) {
             $_SESSION['id_usuario'] = $user['id_usuario'];
             $_SESSION['nombre_usuario'] = $user['nombre_usuario'];
+            $_SESSION['correo'] = $correo; // ✅ Agregada
             $_SESSION['id_rol'] = $user['id_rol'];
-
-            // Redirección según el rol
+            
             switch ($user['id_rol']) {
-                case 1: // Administrador
+                case 1:
                     header("Location: ../admi/index_admi.php");
                     break;
-                case 2: // Usuario (gestiona provincias y reservas)
+                case 2:
                     header("Location: ../usuario/panel_usuario.php");
                     break;
-                case 3: // Invitado
+                case 3:
                     header("Location: ../invitado/panel_invitado.php");
                     break;
                 default:
