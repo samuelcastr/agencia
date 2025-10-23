@@ -54,22 +54,34 @@ AGENCIA/
 ### Lista de chequeo
 
 
-1	Diagrama entidad-relación (DER).	si			
-2	Mockups y mapa de navegación diseñados.	si			
-3	Diagrama de caso de uso elaborado.	si			
-4	Código documentado e indexado.	si			
-5	Interfaz moderna con TailwindCSS.	si			
-6	Coherencia entre backend, frontend y BD.	si			
-7	Aplicación de principios UX/UI (paleta, favicon, logo, imágenes libres).	si			
-8	Mensajes de confirmación implementados (guardado, eliminado, etc).	si			
+1	Diagrama entidad-relación (DER).	si	
+
+2	Mockups y mapa de navegación diseñados.	si	
+
+3	Diagrama de caso de uso elaborado.	si		
+
+4	Código documentado e indexado.	si	
+
+5	Interfaz moderna con TailwindCSS.	si	
+
+6	Coherencia entre backend, frontend y BD.	si	
+
+7	Aplicación de principios UX/UI (paleta, favicon, logo, imágenes libres).	si		
+
+8	Mensajes de confirmación implementados (guardado, eliminado, etc).	si		
+
 9	Archivo README.md (o LÉAME.md) completo.	si			
 					
 					
 					
 1	El sistema permite registro e inicio de sesión de usuarios.			si	
+
 2	El cliente puede crear nuevas reservas de viaje.			si	
+
 3	El usuario puede consultar y modificar reservas.			si	
+
 4	El administrador gestiona viajes, usuarios y roles.			si	
+
 5	Vistas diseñadas con TailwindCSS.			si	
 					
 
